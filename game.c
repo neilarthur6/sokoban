@@ -201,6 +201,13 @@ int movePlayer(int dx, int dy) {
     }
 }
 
+// Téléporte le joueur à une position aléatoire vide
+int teleportPlayer() {
+    Position newPos = getRandomEmptyPosition();
+    gameState.player = newPos;
+    return 1;
+}
+
 // Vérifie si le jeu est gagné
 int isGameWon() {
     return gameState.numTiles == 1;
@@ -342,6 +349,9 @@ int main() {
                 break;
             case RIGHT:
                 moved = movePlayer(1, 0);
+                break;
+            case T:
+                moved = teleportPlayer();
                 break;
             case Q:
                 running = 0;
